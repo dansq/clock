@@ -5,11 +5,62 @@
 	<title>Smart Clock</title>
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
 </head>
-<body>
-	show me yours skills! =D
+<body ng-app="myApp">
+
+
+	<div ng-controller="FirstCtrl" ng-cloak>
+		<md-content> <md-tabs md-dynamic-height md-border-bottom>
+		<md-tab label="Sobre"> <md-content class="md-padding">
+		<h1 class="md-display-2">Olá</h1>
+		<p>'O que esta página é exatamente?', você pode estar se perguntando.<br>Bem em resumo, é uma interface para uma REST API.
+			<br>Dando um pouco mais de detalhes, interagindo com essa página você pode adicionar e visualizar clocks, tudo isso por meio de recursos REST.
+		</p>
+		
+		<p>Para utilizar o sistema basta navegar pelas abas.
+			<br>Na segunda aba você pode adicionar novos clocks ao sistema, e na terceira pode ver uma lista de todos os clocks existentes no sistema.
+		</p>
+
+		</md-content> </md-tab> <md-tab label="Adicionar"> <md-content class="md-padding">
+			<h1 class="md-display-2">Adicionar</h1>
+			
+			<p>Para adicionar um novo clock ao sistema, basta informar a hora desejada e clicar em 'ADICIONAR'.</p>
+			
+			<div layout="column" ng-cloak class="md-inline-form">
+				<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+					<div>
+						<md-input-container> <label>
+							Hora (HH:mm)</label> <input md-maxlength="5" required type="text"
+							ng-model="time">
+						</md-input-container>
+						<md-button ng-click="postClock(time)" class="md-raised md-primary">adicionar</md-button>
+					</div>
+				</md-content>
+			</div>
+		</md-content> </md-tab> <md-tab label="Listar"> <md-content class="md-padding">
+		<h1 class="md-display-2">Lista</h1>
+		
+		<p>Aqui você pode acessar a lista de todos os clocks registrados no sistema.</p>
+		<p>Se já existirem clocks no sistema, eles serão listados automaticamente</p>
+		<p>Caso tenha adicionado novos clocks, por favor utilizar o botão abaixo para atualizar a lista.<br>Atualizar a página também funciona.</p>
+
+		<div ng-cloak>
+			<md-button ng-click="listClocks()" class="md-raised">Atualizar</md-button>
+			<ul>
+				<div ng-repeat="clock in clocks">
+					<md-button ng-click="getClock(clock.id)" class="md-raised">
+						clock <br>
+						{{clock.id}} <br>
+					</md-button>
+				</div>
+			</ul>
+		</div>
+		</md-content> </md-tab> </md-tabs> </md-content>
+	</div>
 
 	<!-- Angular Material requires Angular.js Libraries -->
 	<script src="bower_components/angular/angular.js"></script>
@@ -19,5 +70,7 @@
 	<script src="bower_components/moment/locale/de.js"></script>
 	<script src="bower_components/angular-moment/angular-moment.js"></script>
 	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="scripts/app.js"></script>
+	
 </body>
 </html>

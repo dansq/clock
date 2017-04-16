@@ -1,4 +1,4 @@
-package br.ufpe.nti.model;
+package factory;
 
 import java.sql.Timestamp;
 import java.time.LocalTime;
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import br.ufpe.nti.util.ClockLocalTimeSerializer;
 
 @Entity
-public class Clock {
+public class Clocky implements Clocks {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
