@@ -1,7 +1,6 @@
 package br.ufpe.nti.model;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -26,8 +25,6 @@ public class ClockController {
 	
 	@EJB
 	ClockHistoryRepository repo;
-	
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	@RequestMapping(value="/clock", method=RequestMethod.GET, produces="application/json")
 	public ResponseEntity<Clocks> getClock(){
